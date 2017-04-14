@@ -13,7 +13,7 @@
  * $('.h5-upload').h5upload();
  * 
  * @example
- * $('.h5-upload').h5upload({max:9,maxWidth:1000,maxHeight:100});
+ * $('.h5-upload').h5upload({max:9,maxWidth:1000,maxHeight:1000});
  * 
  */
 $.fn.extend({
@@ -25,12 +25,24 @@ $.fn.extend({
             max: 1,
             maxWidth: 800,
             maxHeight: 800,
-            uploadFieldName: 'imageUrl'
+            uploadFieldName: 'imageUrl',
+            data:[]
         };
         $.extend(settings, options);
         return $(this).each(function () {
             var container = $(this);
-                
+            $(settings.data).each(function(){
+                $('<div class="h5-upload-item">\
+                        <input type="file" class="h5-upload-control" accept="image/png,image/gif,image/jpeg,image/bmp">\
+                        <img src="'+ this +'" class="h5-upload-preview">\
+                        <input type="hidden" name="' + settings.uploadFieldName + '" class="h5-upload-field" value="'+ this +'">\
+                        <span class="h5-upload-remove"><img src="'+settings.btnRemove+'"></span>\
+                        <div class="h5-upload-error"></div>\
+                        <div class="h5-upload-progressbar">\
+                            <span></span>\
+                        </div>\
+                    </div>').appendTo(container);
+            });    
             container.on('change', '[type=file]', function () {
                 var uploadControl = this,
                     item = $(uploadControl).closest('.h5-upload-item'),
@@ -52,7 +64,7 @@ $.fn.extend({
                         if (item.hasClass('h5-upload-item-add')) {
                             item.removeClass('h5-upload-item-add');
                         }
-                        SetUploadButtonAdd(container);
+                        setUploadButtonAdd(container);
                         setProgressbar(progressbar,0);
                         errorTxt.hide();
                         uploadFile(resizeFile, {
@@ -67,7 +79,7 @@ $.fn.extend({
                                         var ret = JSON.parse(e.target.responseText);
                                         if(ret.success){
                                             if (field.length > 0) {
-                                                field.val(data.url);
+                                                field.val(ret.url);
                                             }
                                         }else{
                                             errorTxt.show().text(ret.message);
@@ -97,12 +109,24 @@ $.fn.extend({
             });
             container.on('click', '.h5-upload-remove', function () {
                 $(this).closest('.h5-upload-item').remove();
-                SetUploadButtonAdd(container);
+                setUploadButtonAdd(container);
             });
-            SetUploadButtonAdd(container);
-            
+            $('.h5-upload-item',container).each(function(){
+                $('.h5-upload-remove',this).show();
+                setItemSize($(this));
+            });
+            setUploadButtonAdd(container);
         });
-        function SetUploadButtonAdd(container) {
+        function setItemSize(item){
+            item.height(item.width());
+            $(':file', item).width(item.width()).height(item.height());
+        }
+        function setRemoveButton(container){
+            if($('.h5-upload-remove',container).length==1){
+                $('.h5-upload-remove',container).hide();
+            }
+        }
+        function setUploadButtonAdd(container) {
             if ($('.h5-upload-item', container).length < settings.max) {
                 if ($('.h5-upload-item-add', container).length == 0) {
                     var item = $('<div class="h5-upload-item-add h5-upload-item">\
@@ -116,13 +140,13 @@ $.fn.extend({
                             </div>\
                         </div>').appendTo(container);
                     setTimeout(function () {
-                        item.height(item.width());
-                        $(':file', item).width(item.width()).height(item.height());
+                        setItemSize(item);
                     }, 100);
                 }
             } else {
                 $('.h5-upload-item-add',container).remove();
             }
+            setRemoveButton(container);
         }
         function setProgressbar(container, progress, speed) {
             if (progress) progress = Math.min(Math.max(progress, 0), 100);
