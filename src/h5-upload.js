@@ -33,7 +33,7 @@ $.fn.extend({
             var container = $(this);
             $(settings.data).each(function(){
                 $('<div class="h5-upload-item">\
-                        <input type="file" class="h5-upload-control" accept="image/png,image/gif,image/jpeg,image/bmp">\
+                        <input type="file" class="h5-upload-control">\
                         <img src="'+ this +'" class="h5-upload-preview">\
                         <input type="hidden" name="' + settings.uploadFieldName + '" class="h5-upload-field" value="'+ this +'">\
                         <span class="h5-upload-remove"><img src="'+settings.btnRemove+'"></span>\
@@ -130,7 +130,7 @@ $.fn.extend({
             if ($('.h5-upload-item', container).length < settings.max) {
                 if ($('.h5-upload-item-add', container).length == 0) {
                     var item = $('<div class="h5-upload-item-add h5-upload-item">\
-                            <input type="file" class="h5-upload-control" name="uploadImage" accept="image/png,image/gif,image/jpeg,image/bmp">\
+                            <input type="file" class="h5-upload-control" name="uploadImage">\
                             <img src="'+settings.btnAdd+'" class="h5-upload-preview">\
                             <input type="hidden" name="' + settings.uploadFieldName + '" class="h5-upload-field" value="">\
                             <span class="h5-upload-remove"><img src="'+settings.btnRemove+'"></span>\
