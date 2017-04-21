@@ -1,0 +1,32 @@
+{
+  "name": "h5-upload",
+  "version": "1.0.0",
+  "description": "HTML5文件上传插件",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laoqiming/h5-upload.git"
+  },
+  "keywords": [
+    "HTML5",
+    "Upload",
+    "Thumbnail"
+  ],
+  "author": "laoqiming",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/laoqiming/h5-upload/issues"
+  },
+  "homepage": "https://github.com/laoqiming/h5-upload#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0",
+    "gulp-md5-plus": "^1.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
+    "jsonfile": "^2.4.0"
+  }
+}
