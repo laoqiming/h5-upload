@@ -1,0 +1,22 @@
+{
+  "name": "h5-upload",
+  "description": "HTML5文件上传插件",
+  "main": "src/h5-upload.js",
+  "authors": [
+    "laoqiming"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "HTML5",
+    "Upload",
+    "Thumbnail"
+  ],
+  "homepage": "https://github.com/laoqiming/h5-upload",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
