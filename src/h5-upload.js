@@ -26,6 +26,7 @@ $.fn.extend({
             maxWidth: 800,
             maxHeight: 800,
             uploadFieldName: 'imageUrl',
+            formFieldName:'image',
             data:[]
         };
         $.extend(settings, options);
@@ -35,7 +36,7 @@ $.fn.extend({
                 $('<div class="h5-upload-item">\
                         <input type="file" class="h5-upload-control">\
                         <img src="'+ this +'" class="h5-upload-preview">\
-                        <input type="hidden" name="' + settings.uploadFieldName + '" class="h5-upload-field" value="'+ this +'">\
+                        <input type="hidden" name="' + settings.formFieldName + '" class="h5-upload-field" value="'+ this +'">\
                         <span class="h5-upload-remove"><img src="'+settings.btnRemove+'"></span>\
                         <div class="h5-upload-error"></div>\
                         <div class="h5-upload-progressbar">\
@@ -130,9 +131,9 @@ $.fn.extend({
             if ($('.h5-upload-item', container).length < settings.max) {
                 if ($('.h5-upload-item-add', container).length == 0) {
                     var item = $('<div class="h5-upload-item-add h5-upload-item">\
-                            <input type="file" class="h5-upload-control" name="uploadImage">\
+                            <input type="file" class="h5-upload-control" name="'+settings.uploadFieldName+'">\
                             <img src="'+settings.btnAdd+'" class="h5-upload-preview">\
-                            <input type="hidden" name="' + settings.uploadFieldName + '" class="h5-upload-field" value="">\
+                            <input type="hidden" name="' + settings.formFieldName + '" class="h5-upload-field" value="">\
                             <span class="h5-upload-remove"><img src="'+settings.btnRemove+'"></span>\
                             <div class="h5-upload-error"></div>\
                             <div class="h5-upload-progressbar">\

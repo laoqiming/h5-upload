@@ -23,11 +23,13 @@
   "homepage": "https://github.com/laoqiming/h5-upload#readme",
   "devDependencies": {
     "bower": "^1.8.0",
+    "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-less": "^3.3.0",
     "gulp-md5-plus": "^1.0.2",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.1.2",
-    "jsonfile": "^2.4.0"
+    "jsonfile": "^2.4.0",
+    "mocha": "^3.4.1"
   }
 }
