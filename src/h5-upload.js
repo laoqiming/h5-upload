@@ -131,7 +131,7 @@ $.fn.extend({
             if ($('.h5-upload-item', container).length < settings.max) {
                 if ($('.h5-upload-item-add', container).length == 0) {
                     var item = $('<div class="h5-upload-item-add h5-upload-item">\
-                            <input type="file" class="h5-upload-control" name="'+settings.uploadFieldName+'">\
+                            <input type="file" class="h5-upload-control">\
                             <img src="'+settings.btnAdd+'" class="h5-upload-preview">\
                             <input type="hidden" name="' + settings.formFieldName + '" class="h5-upload-field" value="">\
                             <span class="h5-upload-remove"><img src="'+settings.btnRemove+'"></span>\
