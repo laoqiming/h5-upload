@@ -79,9 +79,10 @@ $.fn.extend({
                                     try{
                                         var ret = JSON.parse(e.target.responseText);
                                         if(ret.success){
-                                            if (field.length > 0) {
-                                                field.val(ret.url);
+                                            if (field.length == 0) {
+												field = $('<input type="hidden" name="' + settings.formFieldName + '" class="h5-upload-field" value="">').appendTo(item);
                                             }
+											field.val(ret.url);
                                         }else{
                                             errorTxt.show().text(ret.message);
                                             progressbar.hide();
@@ -133,7 +134,6 @@ $.fn.extend({
                     var item = $('<div class="h5-upload-item-add h5-upload-item">\
                             <input type="file" class="h5-upload-control">\
                             <img src="'+settings.btnAdd+'" class="h5-upload-preview">\
-                            <input type="hidden" name="' + settings.formFieldName + '" class="h5-upload-field" value="">\
                             <span class="h5-upload-remove"><img src="'+settings.btnRemove+'"></span>\
                             <div class="h5-upload-error"></div>\
                             <div class="h5-upload-progressbar">\
